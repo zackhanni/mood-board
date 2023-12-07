@@ -1,6 +1,6 @@
 // array for questions and feelings
 const FeelingQuestionData = {
-  question: "How are you feeling?",
+  question: "How are you feeling right now?",
   answers: [
     {
       label: "Happy",
