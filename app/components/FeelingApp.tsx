@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FeelingQuestionData from "./FeelingQuestionData";
 import FeelingAppButton from "./FeelingAppButton";
+import { Greeting } from "./Greeting";
 
 export default function FeelingApp() {
   const [isQuestionTwo, setIsQuestionTwo] = useState(false);
@@ -8,6 +9,8 @@ export default function FeelingApp() {
   const [showResults, setShowResults] = useState(false);
   const [answerOneIndex, setAnswerOneIndex] = useState(0);
   const [answerTwoIndex, setAnswerTwoIndex] = useState(0);
+
+  const username = window.sessionStorage.getItem("username");
 
   const goToQuestionTwo = (index: number) => {
     setAnswerOneIndex(index);
@@ -98,7 +101,10 @@ export default function FeelingApp() {
   //   question one
   return (
     <div className="">
-      <h2 className="text-4xl font-bold my-8 sm:w-[640px]">
+      <p className="text-5xl font-bold mb-4 sm:w-[640px]">
+        <Greeting /> {username}.
+      </p>
+      <h2 className="text-4xl font-bold mb-8 sm:w-[640px]">
         {FeelingQuestionData.question}
       </h2>
       <div className="grid sm:grid-cols-2 gap-4">
