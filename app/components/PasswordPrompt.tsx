@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Button from "./button";
-import FeelingSurveyApp from "./FeelingSurveyApp";
-import FeelingAppDemo from "./FeelingAppDemo";
+import FeelingApp from "./FeelingApp";
+import FeelingAppButton from "./FeelingAppButton";
 
 const PasswordPrompt = () => {
   const [password, setPassword] = useState("");
@@ -26,8 +25,8 @@ const PasswordPrompt = () => {
 
   if (showDemo) {
     return (
-      <main className="flex flex-col items-center justify-center">
-        <FeelingAppDemo />
+      <main className="flex flex-col items-center justify-start sm:max-w-screen-sm w-[90%] h-[90%]">
+        <FeelingApp />
       </main>
     );
   }
@@ -35,7 +34,7 @@ const PasswordPrompt = () => {
   if (showLogin) {
     return (
       <div className="flex items-center justify-center">
-        <div className="w-[600px] h-[300px] bg-black text-white flex flex-col items-center justify-center">
+        <div className="w-[600px] h-[300px]  flex flex-col items-center justify-center">
           <form onSubmit={handleSubmit} className="">
             <label htmlFor="password" className="px-4 text-xl">
               Please enter password to view content
@@ -51,7 +50,7 @@ const PasswordPrompt = () => {
               <button type="submit" className="bg-black text-white px-4 py-2">
                 Submit
               </button>
-              <Button text="Back" onClick={loginScreen} />
+              <FeelingAppButton text="Back" onClick={loginScreen} />
             </div>
           </form>
         </div>
@@ -61,12 +60,12 @@ const PasswordPrompt = () => {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="w-[600px] h-[300px] bg-black text-white flex flex-col items-center justify-center">
+      <div className="w-[90%] sm:w-[600px] h-[300px] flex flex-col items-center justify-between">
         <h2 className="text-4xl font-bold">Welcome!</h2>
         <p>Login to track and save your progress, or try without signing up.</p>
-        <div className="flex">
-          <Button text="Log In" onClick={loginScreen} />
-          <Button text="Start Quiz" onClick={tryDemo} />
+        <div className="flex gap-4">
+          <FeelingAppButton text="Log In" onClick={loginScreen} />
+          <FeelingAppButton text="Start Quiz" onClick={tryDemo} />
         </div>
       </div>
     </div>
