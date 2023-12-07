@@ -1,8 +1,8 @@
 import { useState } from "react";
 import FeelingQuestionData from "./FeelingQuestionData";
-import FeelingAppDemoButton from "./FeelingAppDemoButton";
+import FeelingAppButton from "./FeelingAppButton";
 
-export default function FeelingAppDemo() {
+export default function FeelingApp() {
   const [isQuestionTwo, setIsQuestionTwo] = useState(false);
   const [isQuestionThree, setIsQuestionThree] = useState(false);
   const [showResults, setShowResults] = useState(false);
@@ -30,9 +30,9 @@ export default function FeelingAppDemo() {
   if (showResults) {
     return (
       <div>
-        <h2>This is the results page</h2>
-        <p>Blah Blah Blah</p>
-        <FeelingAppDemoButton onClick={showTheResults} label="Go Back" />
+        <h2 className="text-4xl font-bold my-8">This is the results page</h2>
+        <p>Blah Blah Blah.. results results</p>
+        <FeelingAppButton onClick={showTheResults} text="Go Back" />
       </div>
     );
   }
@@ -40,30 +40,30 @@ export default function FeelingAppDemo() {
   //   question three
   if (isQuestionThree) {
     return (
-      <div>
-        <h2>
+      <div className="w-[100%]">
+        <h2 className="text-4xl font-bold my-8">
           {
             FeelingQuestionData.answers[answerOneIndex].questionTwo.answers[
               answerTwoIndex
             ].questionThree.question
           }
         </h2>
-        <div>
+        <div className="grid sm:grid-cols-2 gap-4">
           {FeelingQuestionData.answers[answerOneIndex].questionTwo.answers[
             answerTwoIndex
           ].questionThree.answers.map((answer) => {
             return (
-              <FeelingAppDemoButton
+              <FeelingAppButton
                 key={answer.label}
                 onClick={showTheResults}
-                label={answer.label}
+                text={answer.label}
               />
             );
           })}
 
-          <FeelingAppDemoButton
+          <FeelingAppButton
             onClick={() => goToQuestionThree(0)}
-            label="Go Back"
+            text="Go Back"
           />
         </div>
       </div>
@@ -74,25 +74,22 @@ export default function FeelingAppDemo() {
   if (isQuestionTwo) {
     return (
       <div>
-        <h2>
+        <h2 className="text-4xl font-bold my-8 sm:w-[640px]">
           {FeelingQuestionData.answers[answerOneIndex].questionTwo.question}
         </h2>
-        <div>
+        <div className="grid sm:grid-cols-2 gap-4">
           {FeelingQuestionData.answers[answerOneIndex].questionTwo.answers.map(
             (answer, index) => {
               return (
-                <FeelingAppDemoButton
+                <FeelingAppButton
                   key={answer.label}
                   onClick={() => goToQuestionThree(index)}
-                  label={answer.label}
+                  text={answer.label}
                 />
               );
             }
           )}
-          <FeelingAppDemoButton
-            onClick={() => goToQuestionTwo(0)}
-            label="Go Back"
-          />
+          <FeelingAppButton onClick={() => goToQuestionTwo(0)} text="Go Back" />
         </div>
       </div>
     );
@@ -101,14 +98,16 @@ export default function FeelingAppDemo() {
   //   question one
   return (
     <div className="">
-      <h2 className="text-4xl font-bold">{FeelingQuestionData.question}</h2>
-      <div>
+      <h2 className="text-4xl font-bold my-8 sm:w-[640px]">
+        {FeelingQuestionData.question}
+      </h2>
+      <div className="grid sm:grid-cols-2 gap-4">
         {FeelingQuestionData.answers.map((answer, index) => {
           return (
-            <FeelingAppDemoButton
+            <FeelingAppButton
               key={answer.label}
               onClick={() => goToQuestionTwo(index)}
-              label={answer.label}
+              text={answer.label}
             />
           );
         })}
