@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import FeelingSurveyApp from "./components/FeelingSurveyApp";
 import PasswordPrompt from "./components/PasswordPrompt";
+import FeelingApp from "./components/FeelingApp";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +19,7 @@ export default function Home() {
   } else {
     return (
       <main className="flex flex-col items-center justify-center">
-        <FeelingSurveyApp />
+        <FeelingApp />
       </main>
     );
   }
