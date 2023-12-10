@@ -4,8 +4,7 @@ import { useState } from "react";
 import FeelingQuestionData from "./FeelingQuestionData";
 import FeelingAppButton from "./FeelingAppButton";
 import { Greeting } from "./Greeting";
-import { getServerSession } from "next-auth";
-import { authConfig } from "../lib/auth";
+import { useSession } from "next-auth/react";
 
 export default function FeelingApp() {
   const [isQuestionTwo, setIsQuestionTwo] = useState(false);
@@ -14,10 +13,8 @@ export default function FeelingApp() {
   const [answerOneIndex, setAnswerOneIndex] = useState(0);
   const [answerTwoIndex, setAnswerTwoIndex] = useState(0);
 
-  let username;
-  if (typeof window !== "undefined") {
-    username = window.sessionStorage.getItem("username");
-  }
+  const { data: session } = useSession();
+  const username = session?.user?.name || "friend";
 
   const goToQuestionTwo = (index: number) => {
     setAnswerOneIndex(index);
@@ -109,7 +106,8 @@ export default function FeelingApp() {
   return (
     <div className="">
       <p className="text-5xl font-bold mb-4 sm:w-[640px]">
-        <Greeting /> {username !== null ? { username } : "guest"}.
+        <Greeting /> <br />
+        {username}.
       </p>
       <h2 className="text-4xl font-bold mb-8 sm:w-[640px]">
         {FeelingQuestionData.question}
