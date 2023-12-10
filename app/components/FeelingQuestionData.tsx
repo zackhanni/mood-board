@@ -26,49 +26,49 @@ const FeelingQuestionData = {
             label: "Interested",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Curious" }, { label: "Inquisitive" }],
             },
           },
           {
             label: "Proud",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Successful" }, { label: "Confident" }],
             },
           },
           {
             label: "Accepted",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Respected" }, { label: "Valued" }],
             },
           },
           {
             label: "Powerful",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Courageous" }, { label: "Creative" }],
             },
           },
           {
             label: "Peaceful",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Loving" }, { label: "Thankful" }],
             },
           },
           {
             label: "Trusting",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Sensitive" }, { label: "Intimate" }],
             },
           },
           {
             label: "Optimistic",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Hopeful" }, { label: "Inspired" }],
             },
           },
         ],
@@ -84,42 +84,42 @@ const FeelingQuestionData = {
             label: "Lonely",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Isolated" }, { label: "Abandoned" }],
             },
           },
           {
             label: "Vulnerable",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Victimized" }, { label: "Fragile" }],
             },
           },
           {
             label: "Despair",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Grief" }, { label: "Powerless" }],
             },
           },
           {
             label: "Guilty",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Ashamed" }, { label: "remorseful" }],
             },
           },
           {
             label: "Depressed",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Empty" }, { label: "Inferior" }],
             },
           },
           {
             label: "Hurt",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Disappointed" }, { label: "Embarrassed" }],
             },
           },
         ],
@@ -135,56 +135,56 @@ const FeelingQuestionData = {
             label: "Let down",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Betrayed" }, { label: "Resentful" }],
             },
           },
           {
             label: "Humiliated",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Disrespectful" }, { label: "Ridiculed" }],
             },
           },
           {
             label: "Bitter",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Indignant" }, { label: "Violated" }],
             },
           },
           {
             label: "Mad",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Furious" }, { label: "Jealous" }],
             },
           },
           {
             label: "Aggressive",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Provoked" }, { label: "Hostile" }],
             },
           },
           {
             label: "Frustrated",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Infuriated" }, { label: "Annoyed" }],
             },
           },
           {
             label: "Distant",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Withdrawn" }, { label: "Numb" }],
             },
           },
           {
             label: "Critical",
             questionThree: {
               question: "This is question 3.",
-              answers: [{ label: "Aroused" }, { label: "Cheeky" }],
+              answers: [{ label: "Skeptical" }, { label: "Dismissive" }],
             },
           },
         ],
