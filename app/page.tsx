@@ -45,6 +45,9 @@ export default async function SignInPage() {
   if (typeof document !== "undefined") {
     window.sessionStorage.setItem("username", username || "friend");
   }
+  // if (typeof document !== "undefined") {
+  //   window.sessionStorage.setItem("username", username || "friend");
+  // }
 
   console.log("Session: ", session);
 
