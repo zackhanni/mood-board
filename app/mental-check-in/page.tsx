@@ -3,6 +3,7 @@
 import React from "react";
 import FeelingApp from "../components/FeelingApp";
 import { signOut } from "next-auth/react";
+import { SessionProvider } from "next-auth/react";
 
 export default function page() {
   function handleSignOut() {
@@ -11,10 +12,16 @@ export default function page() {
 
   return (
     <main className="flex flex-col items-center justify-center">
-      <p className="top-1 fixed font-bold p-4" onClick={handleSignOut}>
-        Log Out
-      </p>
-      <FeelingApp />
+      <div className="top-1 fixed flex">
+        <p className="font-bold p-4" onClick={handleSignOut}>
+          Log Out
+        </p>
+        <p className="font-bold p-4">History</p>
+      </div>
+
+      <SessionProvider>
+        <FeelingApp />
+      </SessionProvider>
     </main>
   );
 }
