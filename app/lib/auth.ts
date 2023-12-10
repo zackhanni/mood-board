@@ -4,12 +4,13 @@ import { redirect, useRouter } from "next/navigation";
 
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import GithubProvider from "next-auth/providers/github";
 
-// import prisma from "./prisma";
+import prisma from "./prisma";
 
 export const authConfig: NextAuthOptions = {
   providers: [
+
+    // sign in with credentials on our server
     CredentialsProvider({
       name: "Sign in",
       credentials: {
@@ -39,6 +40,7 @@ export const authConfig: NextAuthOptions = {
         return null;
       },
     }),
+    // sign in with google
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
