@@ -12,13 +12,6 @@ import { getCsrfToken } from "next-auth/react";
 
 export default async function SignInPage() {
   const session = await getServerSession(authConfig);
-
-  const username = session?.user?.name;
-
-  // if (typeof document !== "undefined") {
-  //   window.sessionStorage.setItem("username", username || "friend");
-  // }
-
   console.log("Session: ", session);
 
   if (session) return redirect("/mental-check-in");
