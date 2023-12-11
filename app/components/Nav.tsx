@@ -7,7 +7,7 @@ export default function Nav() {
   }
 
   return (
-    <div className="h-14 w-full top-1 fixed flex hover:bg-black hover:text-white justify-center">
+    <div className="h-14 w-full top-1 fixed flex hover:bg-black hover:text-white justify-center hover:shadow-2xl">
       <p className="font-bold p-4 hover:underline" onClick={handleSignOut}>
         Log Out
       </p>
