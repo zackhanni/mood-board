@@ -31,10 +31,6 @@ export default function FeelingApp() {
     setIsQuestionThree(!isQuestionThree);
   };
 
-  const saveResults = (feeling: string) => {
-    console.log(feeling);
-  };
-
   const finishMentalCheckIn = async (e) => {
     e.preventDefault();
     try {
@@ -59,7 +55,7 @@ export default function FeelingApp() {
           onClick={() => setShowResults(false)}
           text="Go Back"
         />
-        <FeelingAppButton onClick={finishMentalCheckIn} text="Confirm" />
+        <FeelingAppButton onClick={finishMentalCheckIn} text="Save Answers" />
       </div>
     );
   }
@@ -109,9 +105,9 @@ export default function FeelingApp() {
 
             <button
               type="submit"
-              className="w-full h-12 px-6 mt-4 text-lg text-white transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-700"
+              className="px-4 py-2 flex w-full md:max-w-screen-sm font-bold rounded border-solid border-4 border-black hover:bg-black hover:text-white items-center justify-center text-xl"
             >
-              Submit Answers
+              Continue
             </button>
           </form>
         </div>
