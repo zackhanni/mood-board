@@ -2,26 +2,17 @@
 
 import React from "react";
 import FeelingApp from "../components/FeelingApp";
-import { signOut } from "next-auth/react";
+
 import { SessionProvider } from "next-auth/react";
+import Nav from "../components/Nav";
 
-export default function page() {
-  function handleSignOut() {
-    signOut({ callbackUrl: "/" });
-  }
-
+export default function MentalCheckIn() {
   return (
-    <main className="flex flex-col items-center justify-center">
-      <div className="top-1 fixed flex">
-        <p className="font-bold p-4" onClick={handleSignOut}>
-          Log Out
-        </p>
-        <p className="font-bold p-4">History</p>
-      </div>
-
-      <SessionProvider>
+    <SessionProvider>
+      <Nav />
+      <main className="flex flex-col items-center justify-center">
         <FeelingApp />
-      </SessionProvider>
-    </main>
+      </main>
+    </SessionProvider>
   );
 }
