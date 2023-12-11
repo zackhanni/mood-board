@@ -10,7 +10,7 @@ export default function MentalCheckIn() {
   return (
     <SessionProvider>
       <Nav />
-      <main className="flex flex-col items-center justify-center">
+      <main className="flex flex-col items-center justify-center max-w-[90%]">
         <FeelingApp />
       </main>
     </SessionProvider>
