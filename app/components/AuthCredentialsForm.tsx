@@ -59,7 +59,7 @@ export function CredentialsForm(props: CredentialsFormProps) {
 
       <button
         type="submit"
-        className="w-full h-12 px-6 mt-4 text-lg text-white transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-700"
+        className="w-full h-14 px-6 mt-4 text-lg text-white hover:text-black transition-colors duration-150 bg-black rounded-lg focus:shadow-outline hover:bg-white hover:border-black hover:border-4"
       >
         Log in
       </button>
