@@ -44,17 +44,19 @@ export default function FeelingApp() {
   if (showResults) {
     return (
       <div>
-        <h2 className="text-4xl font-bold my-8">Results</h2>
-        <p>Okay {username},</p>
+        <h2 className="text-4xl font-bold my-8">Check in summary</h2>
+        <p className=" font-bold">Okay {username},</p>
         <p>
           Right now you&apos;re feeling{" "}
           <span className="underline">{feeling}</span>
         </p>
         {thoughts !== "" ? <p>Because - &quot;{thoughts}&quot;</p> : ""}
-        <FeelingAppButton
-          onClick={() => setShowResults(false)}
-          text="Go Back"
-        />
+        <div className="py-4">
+          <FeelingAppButton
+            onClick={() => setShowResults(false)}
+            text="Go Back"
+          />
+        </div>
         <FeelingAppButton onClick={finishMentalCheckIn} text="Save Answers" />
       </div>
     );
@@ -119,7 +121,7 @@ export default function FeelingApp() {
   if (isQuestionTwo) {
     return (
       <div>
-        <h2 className="text-4xl font-bold my-8 sm:w-[640px]">
+        <h2 className="text-4xl font-bold my-8 sm:w-[640px] mt-14">
           {FeelingQuestionData.answers[answerOneIndex].questionTwo.question}
         </h2>
         <div className="grid sm:grid-cols-2 gap-4">
