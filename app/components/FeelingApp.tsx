@@ -57,7 +57,7 @@ export default function FeelingApp() {
             text="Go Back"
           />
         </div>
-        <FeelingAppButton onClick={finishMentalCheckIn} text="Save Answers" />
+        <FeelingAppButton onClick={finishMentalCheckIn} text="Save Answer" />
       </div>
     );
   }
