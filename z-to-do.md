@@ -19,3 +19,11 @@ https://feelingswheel.com/
 
 - properly set up database for users to sign in with an account
 - create a way to create an account and store to a database
+
+## database next stems
+
+- learn and understand next-auth
+  https://next-auth.js.org/getting-started/example
+
+- learn - what is prisma
+- learn - getting started with mongo db
