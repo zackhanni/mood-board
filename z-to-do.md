@@ -9,7 +9,9 @@ emily- "name of app should be moodboard" and "pay me when 50 percent"
 
 ## notes
 
-for google authentication - https://www.youtube.com/watch?v=AbUVY16P4Ys
+for google authentication basic login - https://www.youtube.com/watch?v=AbUVY16P4Ys
+
+video at 8min 30sec goes over moving to production site for live google auth
 
 ## feeling wheel ref
 
