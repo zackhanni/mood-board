@@ -11,23 +11,24 @@ datasource db {
 }
 
 model User {
- id  String @id @default(uuid()) @map("_id") @db.ObjectId
+ id  String @id @default(auto()) @map("_id") @db.ObjectId
  email String @unique
  name String?
  oauthToken oauthToken[]
- posts Post[]
+ entries Entry[]
 }
 
-model Post {
- id      String @id @default(uuid()) @map("_id") @db.ObjectId
- title   String
- content String?
- author  User  @relation(fields: [authorId], references: [id])
- authorId String
+model Entry {
+ id      String @id @default(auto()) @map("_id") @db.ObjectId
+ feeling String
+ thoughts String?
+ createdAt DateTime  @default(now())
+ userId String
+ user  User  @relation(fields: [userId], references: [id])
 }
 
 model oauthToken {
- id     String @id @default(uuid()) @map("_id") @db.ObjectId
+ id     String @id @default(auto()) @map("_id") @db.ObjectId
  userId String
  accessToken String
  refreshToken String
