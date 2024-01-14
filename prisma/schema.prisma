@@ -11,7 +11,26 @@ datasource db {
 }
 
 model User {
-  id    String  @id @default(auto()) @map("_id") @db.ObjectId
-  email String  @unique
-  name  String?
+ id  String @id @default(uuid()) @map("_id") @db.ObjectId
+ email String @unique
+ name String?
+ oauthToken oauthToken[]
+ posts Post[]
 }
+
+model Post {
+ id      String @id @default(uuid()) @map("_id") @db.ObjectId
+ title   String
+ content String?
+ author  User  @relation(fields: [authorId], references: [id])
+ authorId String
+}
+
+model oauthToken {
+ id     String @id @default(uuid()) @map("_id") @db.ObjectId
+ userId String
+ accessToken String
+ refreshToken String
+ user   User  @relation(fields: [userId], references: [id])
+}
+

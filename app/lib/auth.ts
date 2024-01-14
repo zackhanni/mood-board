@@ -5,7 +5,7 @@ import { redirect, useRouter } from "next/navigation";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
-import prisma from "./prisma";
+import { prisma } from "./prisma";
 
 export const authConfig: NextAuthOptions = {
   providers: [
