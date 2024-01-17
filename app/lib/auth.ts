@@ -5,7 +5,9 @@ import { redirect, useRouter } from "next/navigation";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
-import { prisma } from "./prisma";
+import prisma from "./prisma";
+
+
 
 export const authConfig: NextAuthOptions = {
   providers: [
@@ -47,6 +49,12 @@ export const authConfig: NextAuthOptions = {
     }),
   ],
 };
+
+
+// call this on a page to make sure user is logged in before displaying the page
+
+// do i not need to call this? is <SessionProvider> good enough to replace this? check end of nextAuth youtube video. check if i can view pages like history without being logged in. 
+
 
 export async function loginIsRequiredServer() {
   const session = await getServerSession(authConfig);
