@@ -11,6 +11,7 @@ import { CredentialsForm } from "@/app/components/AuthCredentialsForm";
 import { getCsrfToken } from "next-auth/react";
 
 export default async function SignInPage() {
+  // example of session being used
   const session = await getServerSession(authConfig);
   console.log("Session: ", session);
 
