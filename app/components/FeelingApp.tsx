@@ -5,6 +5,8 @@ import FeelingQuestionData from "./FeelingQuestionData";
 import FeelingAppButton from "./FeelingAppButton";
 import { Greeting } from "./Greeting";
 import { useSession } from "next-auth/react";
+import { PrismaClient } from "@prisma/client";
+import { useRouter } from "next/navigation";
 
 export default function FeelingApp() {
   const [isQuestionTwo, setIsQuestionTwo] = useState(false);
@@ -31,10 +33,25 @@ export default function FeelingApp() {
     setIsQuestionThree(!isQuestionThree);
   };
 
+  const prisma = new PrismaClient();
+  const router = useRouter();
+
   const finishMentalCheckIn = async (e) => {
     e.preventDefault();
     try {
-      // await saveToDatabase(thoughts);
+      const newEntry = await prisma.entry.create({
+        data: {
+          feeling: feeling,
+          thoughts: thoughts,
+          user: {
+            connect: {
+              id: session?.user?.id,
+            },
+          },
+        },
+      });
+      console.log("New entry created: ", newEntry);
+      router.push("/history");
     } catch (error) {
       console.error("Error saving to database: ", error);
     }
