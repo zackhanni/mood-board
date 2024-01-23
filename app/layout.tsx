@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // import { SessionProvider } from "next-auth/react";
 
 import "./globals.css";
+import AuthProvider from "./components/AuthProvider";
 
 export const metadata: Metadata = {
   title: "Emotional Intelligence",
@@ -15,10 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // <SessionProvider>
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <main>
+          <AuthProvider>{children}</AuthProvider>
+        </main>
+      </body>
     </html>
-    // </SessionProvider>
   );
 }
