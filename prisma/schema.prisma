@@ -23,8 +23,8 @@ model Entry {
   feeling   String
   thoughts  String?
   createdAt DateTime @default(now())
-  userId    String   @db.ObjectId
-  user      User     @relation(fields: [userId], references: [id])
+  email     String
+  user      User     @relation(fields: [email], references: [email])
 }
 
 // aync app to database with...
