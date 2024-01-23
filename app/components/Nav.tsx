@@ -2,12 +2,12 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 
 export default function Nav() {
-  function handleSignOut() {
-    signOut({ callbackUrl: "/" });
-  }
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: "/" });
+  };
 
   return (
-    <div className="h-14 w-full top-1 fixed flex hover:bg-black hover:text-white justify-center hover:shadow-2xl">
+    <div className="h-14 w-full top-1 left-0 fixed flex hover:bg-black hover:text-white justify-center hover:shadow-2xl">
       <p className="font-bold p-4 hover:underline" onClick={handleSignOut}>
         Log Out
       </p>
