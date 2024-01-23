@@ -39,6 +39,7 @@ export default function SignUpForm() {
 
       const registerResponse = await axios.post("/api/auth/register", newUser);
       console.log(`User ${registerResponse.data.user.name} was created`);
+      // then log new user in and show main page
     } catch (error) {
       console.error("Error creating user:", error);
       setError("Error creating user");
