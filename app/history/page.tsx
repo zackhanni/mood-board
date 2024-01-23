@@ -1,13 +1,8 @@
 "use client";
-import { getCurrentUser } from "../lib/session";
+
 import Nav from "../components/Nav";
-import { SessionProvider } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/app/lib/auth";
-import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
 import UserData from "../components/UserData";
-import HistoryEntries from "../components/historyEntries";
+import HistoryEntries from "../components/HistoryEntries";
 
 export default function History() {
   return (
