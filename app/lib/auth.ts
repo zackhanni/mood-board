@@ -1,20 +1,19 @@
-import { NextAuthOptions, User, getServerSession } from "next-auth";
-import { useSession } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
-
+import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-
+import bcrypt from "bcrypt";
 import prisma from "./prisma";
-
-
+import { connectToDatabase } from "@/helpers/server-helpers";
 
 export const authConfig: NextAuthOptions = {
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
 
-    // sign in with credentials on our server
     CredentialsProvider({
-      name: "Sign in",
+      name: "credentials",
       credentials: {
         email: {
           label: "Email",
@@ -23,48 +22,53 @@ export const authConfig: NextAuthOptions = {
         },
         password: { label: "Password", type: "password" },
       },
+
       async authorize(credentials) {
         if (!credentials || !credentials.email || !credentials.password)
           return null;
+         
+          try {
+            await connectToDatabase()
+            const user = await prisma.user.findFirst(
+              {where: { email: credentials.email }
+            });
 
-        const dbUser = await prisma.user.findFirst({
-          where: { email: credentials.email },
-        });
+            if (!user?.hashedPassword) {
+              return null
+            }
 
-        //Verify Password here
-        //We are going to use a simple === operator
-        //In production DB, passwords should be encrypted using something like bcrypt...
-        if (dbUser && dbUser.password === credentials.password) {
-          const { password, createdAt, id, ...dbUserWithoutPassword } = dbUser;
-          return dbUserWithoutPassword as User;
-        }
+            const isPasswordCorrect = await bcrypt.compare(
+              credentials.password, 
+              user.hashedPassword
+            )
+            if (isPasswordCorrect) {
+              return user
+            }
 
-        return null;
+            return null
+          } catch (error) {
+            console.log(error)
+            return null
+          } finally {
+            await prisma.$disconnect()
+          }
       },
     }),
-    // sign in with google
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-    }),
   ],
-};
-
-
-// call this on a page to make sure user is logged in before displaying the page
-
-// do i not need to call this? is <SessionProvider> good enough to replace this? check end of nextAuth youtube video. check if i can view pages like history without being logged in. 
-
-
-export async function loginIsRequiredServer() {
-  const session = await getServerSession(authConfig);
-  if (!session) return redirect("/");
-}
-
-export function loginIsRequiredClient() {
-  if (typeof window !== "undefined") {
-    const session = useSession();
-    const router = useRouter();
-    if (!session) router.push("/");
+  secret: process.env.NEXTAUTH_URL,
   }
-}
+
+
+// double check these 2 functions and where they are being called.
+// export async function loginIsRequiredServer() {
+//   const session = await getServerSession(authConfig);
+//   if (!session) return redirect("/");
+// }
+
+// export function loginIsRequiredClient() {
+//   if (typeof window !== "undefined") {
+//     const session = useSession();
+//     const router = useRouter();
+//     if (!session) router.push("/");
+//   }
+// }
