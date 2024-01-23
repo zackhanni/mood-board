@@ -8,13 +8,13 @@ interface CredentialsFormProps {
   csrfToken?: string;
 }
 
-export function CredentialsForm(props: CredentialsFormProps) {
+export function CredentialsLogInForm(props: CredentialsFormProps) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
+    const data = new FormData(e.currentTarget as HTMLFormElement);
 
     const signInResponse = await signIn("credentials", {
       email: data.get("email"),
@@ -24,7 +24,7 @@ export function CredentialsForm(props: CredentialsFormProps) {
 
     if (signInResponse && !signInResponse.error) {
       //Redirect to mental check in questions (/mental-check-in)
-      router.push("/mental-check-in");
+      // router.push("/mental-check-in");
     } else {
       console.log("Error: ", signInResponse);
       setError("Your Email or Password is wrong!");
