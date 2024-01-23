@@ -29,3 +29,11 @@ https://feelingswheel.com/
 
 - learn - what is prisma
 - learn - getting started with mongo db
+
+## creating a new user with mongo, prisma
+
+https://www.youtube.com/watch?v=JYcOAzs_Q4A
+
+## prisma
+
+i get warnings - warn(prisma-client) This is the 10th instance of Prisma Client being started. Make sure this is intentional.
