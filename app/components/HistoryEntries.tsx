@@ -1,28 +1,35 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
 type Entry = {
   id: string;
-  createdAt: Date;
   feeling: string;
   thoughts: string;
+  createdAt: Date;
 };
 
 export default function HistoryEntries() {
   const [entries, setEntries] = useState<Entry[]>([]);
+  const { data: session } = useSession();
+  const userEmail = session?.user?.email;
 
   useEffect(() => {
-    const fetchEntries = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get("/api/entries");
-        setEntries(response.data);
+        const response = await axios.get("/api/auth/getEntries", {
+          params: {
+            email: userEmail,
+          },
+        });
+        setEntries(response.data.entries);
       } catch (error) {
         console.error("Failed to fetch entries:", error);
       }
     };
 
-    fetchEntries();
-  }, []);
+    fetchData();
+  }, [userEmail]);
 
   return (
     <div id="user-history-data">
