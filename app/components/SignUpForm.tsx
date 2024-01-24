@@ -59,14 +59,14 @@ export default function SignUpForm() {
       <input
         type="name"
         name="name"
-        placeholder="What is your name?"
+        placeholder="Name"
         required
         className="w-full px-4 py-4 mb-4 border border-gray-300 rounded-md"
       />
       <input
         type="email"
         name="email"
-        placeholder="sample@email.com"
+        placeholder="Email"
         required
         className="w-full px-4 py-4 mb-4 border border-gray-300 rounded-md"
       />
@@ -81,7 +81,7 @@ export default function SignUpForm() {
 
       <button
         type="submit"
-        className="w-full h-14 px-6 mt-4 text-lg text-white hover:text-black transition-colors duration-150 bg-black rounded-lg focus:shadow-outline hover:bg-white hover:border-black hover:border-4"
+        className="w-full h-14 px-6 mt-4 text-lg hover:text-white text-black transition-colors duration-150 hover:bg-black rounded-lg focus:shadow-outline bg-white border-black border-4  hover:translate-y-1"
       >
         Create an account
       </button>
