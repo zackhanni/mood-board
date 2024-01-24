@@ -1,52 +1,68 @@
 "use client";
 
-import Image from "next/image";
-import googleLogo from "@/public/google.png";
-import {
-  CredentialsSignInButton,
-  GoogleSignInButton,
-} from "@/app/components/AuthButtons";
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/app/lib/auth";
-import { redirect } from "next/navigation";
-import { CredentialsLogInForm } from "@/app/components/CredentialsLogInForm";
-import { getCsrfToken } from "next-auth/react";
+import { GoogleSignIn, CredentialsSignIn } from "./components/SignIn";
 import { signOut, useSession } from "next-auth/react";
-import { SessionProvider } from "next-auth/react";
 import Nav from "./components/Nav";
 import SignUpForm from "./components/SignUpForm";
+import { useState } from "react";
 
 export default function SignInPage() {
+  const [toggle, setToggle] = useState(false);
   const { data, status } = useSession();
+
+  const handleClick = () => {
+    setToggle(!toggle);
+  };
 
   const handleSignOut = () => {
     signOut({ callbackUrl: "/" });
   };
-
-  // const session = await getServerSession(authConfig);
-  // console.log("Session: ", session);
-  // if (session) return redirect("/mental-check-in");
 
   if (status === "unauthenticated") {
     return (
       <div className="w-full flex flex-col items-center justify-center min-h-screen py-2">
         <div>
           <h1 className="text-4xl font-bold text-center">Mood Board</h1>
-          <p>Learn about your feelings and track your daily emotions</p>
+          <p className="text-center">
+            Learn about your feelings and track your daily emotions
+          </p>
         </div>
 
-        <div className="flex flex-col items-center mt-10 p-10 rounded-lg shadow-md hover:shadow-2xl">
-          <h2 className="mt-10 mb-4 text-4xl font-bold">Sign In</h2>
-          <GoogleSignInButton />
-          <span className="text-2xl font-semibold text-black text-center mt-8">
-            Or
-          </span>
-          {/* <CredentialsSignInButton /> */}
-          <CredentialsLogInForm />
-          <span className="text-2xl font-semibold text-black text-center mt-8">
-            Or... Sign up
-          </span>
-          <SignUpForm />
+        <div className="flex flex-col items-center mt-10 rounded-lg sm:shadow-md sm:hover:shadow-2xl p-10">
+          <div className="flex">
+            <h2
+              className={`rounded-md mb-4 text-4xl font-bold px-8 py-4 ${
+                !toggle
+                  ? "bg-black text-white shadow-2xl"
+                  : "bg-white text-black"
+              }`}
+              onClick={handleClick}
+            >
+              Sign In
+            </h2>
+            <h2
+              className={`rounded-md mb-4 text-4xl font-bold px-8 py-4 ${
+                toggle
+                  ? "bg-black text-white shadow-2xl"
+                  : "bg-white text-black"
+              }`}
+              onClick={handleClick}
+            >
+              Sign Up
+            </h2>
+          </div>
+
+          {!toggle ? (
+            <>
+              <CredentialsSignIn />
+              <span className="text-2xl font-semibold text-black text-center mt-8">
+                Or
+              </span>
+              <GoogleSignIn />
+            </>
+          ) : (
+            <SignUpForm />
+          )}
         </div>
       </div>
     );
