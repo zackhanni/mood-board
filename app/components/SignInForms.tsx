@@ -14,10 +14,10 @@ export function GoogleSignIn() {
   return (
     <button
       onClick={handleGoogleClick}
-      className="w-full flex items-center font-semibold justify-center h-14 px-6 mt-4 text-xl  transition-colors duration-300 bg-white hover:bg-black border-4 border-black text-black hover:text-white rounded-lg focus:shadow-outline hover:translate-y-1"
+      className="w-full flex items-center font-semibold justify-center h-14 px-6 mt-4 transition-colors duration-300 bg-white hover:bg-black border-4 border-black text-black hover:text-white rounded-lg focus:shadow-outline hover:-translate-y-1 hover:underline"
     >
+      <span className="mr-4">Continue with</span>
       <Image src={googleLogo} alt="Google Logo" width={20} height={20} />
-      <span className="ml-4">Continue with Google</span>
     </button>
   );
 }
@@ -51,7 +51,7 @@ export function CredentialsSignIn(props: CredentialsFormProps) {
 
   return (
     <form
-      className="w-full mt-8 text-xl text-black font-semibold flex flex-col"
+      className="w-full mt-8 text-black font-semibold flex flex-col"
       onSubmit={handleCredentialsSubmit}
     >
       {error && (
@@ -64,7 +64,7 @@ export function CredentialsSignIn(props: CredentialsFormProps) {
         name="email"
         placeholder="Email"
         required
-        className="w-full px-4 py-4 mb-4 border border-gray-300 rounded-md"
+        className="w-full px-4 py-3 mb-4 border border-gray-300 rounded-md"
       />
 
       <input
@@ -72,12 +72,12 @@ export function CredentialsSignIn(props: CredentialsFormProps) {
         name="password"
         placeholder="Password"
         required
-        className="w-full px-4 py-4 mb-4 border border-gray-300 rounded-md"
+        className="w-full px-4 py-3 mb-4 border border-gray-300 rounded-md"
       />
 
       <button
         type="submit"
-        className="w-full h-14 px-6 mt-4 text-lg hover:text-white text-black transition-colors duration-150 hover:bg-black rounded-lg focus:shadow-outline bg-white border-black border-4 hover:translate-y-1"
+        className="w-full h-14 px-6 hover:text-white text-black transition-colors duration-150 hover:bg-black rounded-lg focus:shadow-outline bg-white border-black border-4 hover:-translate-y-1 hover:underline"
       >
         Log in
       </button>
