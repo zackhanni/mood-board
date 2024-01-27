@@ -8,10 +8,17 @@ export default function UserData() {
   const profileImage = session?.user?.image;
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <Image src={profileImage} alt="Profile Image" width={100} height={100} />
-      <p>{username}</p>
-      <p>{email}</p>
+    <div className="">
+      {profileImage ? (
+        <Image
+          src={profileImage}
+          alt="Profile Image"
+          width={100}
+          height={100}
+        />
+      ) : null}
+      <p className="">{username}</p>
+      <p className="">{email}</p>
     </div>
   );
 }
