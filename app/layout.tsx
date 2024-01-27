@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-// import { SessionProvider } from "next-auth/react";
-
 import "./globals.css";
 import AuthProvider from "./components/AuthProvider";
+import Nav from "./components/Nav";
 
 export const metadata: Metadata = {
   title: "Emotional Intelligence",
@@ -18,9 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main>
-          <AuthProvider>{children}</AuthProvider>
-        </main>
+        <AuthProvider>
+          <Nav />
+          <main className="mt-16">{children}</main>
+        </AuthProvider>
       </body>
     </html>
   );
