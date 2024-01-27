@@ -37,3 +37,11 @@ https://www.youtube.com/watch?v=JYcOAzs_Q4A
 ## prisma
 
 i get warnings - warn(prisma-client) This is the 10th instance of Prisma Client being started. Make sure this is intentional.
+
+## Security
+
+change api routes (getEntries, makeEntry, etc) to get data based on userId and not email address.
+
+maybe create a different api route for getUserId to get a user's id based on their email. but would that still have security risks?
+
+maybe find a way to store the database userId in a token or something when the user logs in.
