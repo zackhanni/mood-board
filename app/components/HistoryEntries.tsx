@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 type Entry = {
   id: string;
   feeling: string;
-  thoughts: string;
+  thoughts?: string;
   createdAt: Date;
 };
 
@@ -32,14 +32,38 @@ export default function HistoryEntries() {
   }, [userEmail]);
 
   return (
-    <div id="user-history-data">
+    <div>
       {entries.length > 0 ? (
-        entries.map((entry) => {
+        entries.toReversed().map((entry) => {
           return (
-            <div key={entry.id} className="flex flex-row">
-              {/* <p>{entry.createdAt}</p> */}
-              <p>{entry.feeling}</p>
-              <p>{entry.thoughts}</p>
+            <div
+              key={entry.id}
+              className="grid gap-3 border-4 border-black m-2 p-4 rounded-md grid-cols-1 md:grid-cols-2 sm:max-w-screen-md mx-auto max-w-[95%]"
+            >
+              <div className="">
+                <p>
+                  You were feeling{" "}
+                  <span className="font-bold">{entry.feeling} </span> on
+                </p>
+                <p>
+                  {new Date(entry.createdAt).toLocaleDateString("en-US", {
+                    weekday: "short",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </p>
+              </div>
+
+              {entry.thoughts && (
+                <p>
+                  Your <span className="underline">thoughts</span>:
+                  <br />
+                  {entry.thoughts}
+                </p>
+              )}
             </div>
           );
         })
