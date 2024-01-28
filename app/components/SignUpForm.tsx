@@ -48,7 +48,7 @@ export default function SignUpForm() {
 
   return (
     <form
-      className="w-full mt-8 text-xl text-black font-semibold flex flex-col"
+      className="w-full mt-8 text-black font-semibold flex flex-col"
       onSubmit={handleSubmit}
     >
       {error && (
@@ -61,14 +61,14 @@ export default function SignUpForm() {
         name="name"
         placeholder="Name"
         required
-        className="w-full px-4 py-4 mb-4 border border-gray-300 rounded-md"
+        className="w-full px-4 py-3 mb-4 border border-gray-300 rounded-md"
       />
       <input
         type="email"
         name="email"
         placeholder="Email"
         required
-        className="w-full px-4 py-4 mb-4 border border-gray-300 rounded-md"
+        className="w-full px-4 py-3 mb-4 border border-gray-300 rounded-md"
       />
 
       <input
@@ -76,12 +76,12 @@ export default function SignUpForm() {
         name="password"
         placeholder="Password"
         required
-        className="w-full px-4 py-4 mb-4 border border-gray-300 rounded-md"
+        className="w-full px-4 py-3 mb-4 border border-gray-300 rounded-md"
       />
 
       <button
         type="submit"
-        className="w-full h-14 px-6 mt-4 text-lg hover:text-white text-black transition-colors duration-150 hover:bg-black rounded-lg focus:shadow-outline bg-white border-black border-4  hover:translate-y-1"
+        className="w-full h-14 px-6 hover:text-white text-black transition-colors duration-150 hover:bg-black rounded-lg focus:shadow-outline bg-white border-black border-4  hover:-translate-y-1 hover:underline"
       >
         Create an account
       </button>
