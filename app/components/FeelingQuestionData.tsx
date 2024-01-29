@@ -4,6 +4,7 @@ const FeelingQuestionData = {
   answers: [
     {
       label: "Happy",
+      color: "yellow-100",
       questionTwo: {
         question:
           "You feel happy. It's wonderful to hear that. Can you be more specific?",
@@ -85,6 +86,7 @@ const FeelingQuestionData = {
     },
     {
       label: "Sad",
+      color: "blue-100",
       questionTwo: {
         question:
           "You feel sad. Remember that it is not permanent. Let's find a more specific description.",
@@ -142,6 +144,7 @@ const FeelingQuestionData = {
     },
     {
       label: "Angry",
+      color: "red-100",
       questionTwo: {
         question:
           "You feel angry. Take a deep breath. Let's find a more specific description.",
