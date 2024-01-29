@@ -171,6 +171,7 @@ export default function MentalCheckInForm() {
                   key={answer.label}
                   onClick={() => goToQuestionThree(index)}
                   text={answer.label}
+                  // color={}
                 />
               );
             })}
@@ -194,6 +195,7 @@ export default function MentalCheckInForm() {
             key={answer.label}
             onClick={() => goToQuestionTwo(index)}
             text={answer.label}
+            color={answer.color}
           />
         );
       })}
