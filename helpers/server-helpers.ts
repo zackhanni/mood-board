@@ -1,6 +1,6 @@
 // "use client"
 
-import prisma from "@/app/lib/prisma"
+import prisma from "@/prisma";
 
 export const connectToDatabase = async () => {
     try {

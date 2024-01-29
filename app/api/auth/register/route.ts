@@ -1,5 +1,5 @@
 import { connectToDatabase } from "@/helpers/server-helpers";
-import prisma from "@/app/lib/prisma";
+import prisma from "@/prisma";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 

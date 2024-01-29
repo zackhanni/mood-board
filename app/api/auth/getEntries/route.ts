@@ -1,6 +1,6 @@
 import { connectToDatabase } from "@/helpers/server-helpers"
 import { NextRequest, NextResponse } from "next/server"
-import prisma from "@/app/lib/prisma"
+import prisma from "@/prisma"
 
 
 export const GET = async (req: NextRequest) => {
