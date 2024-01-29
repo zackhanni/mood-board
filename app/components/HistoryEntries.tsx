@@ -38,7 +38,7 @@ export default function HistoryEntries() {
           return (
             <div
               key={entry.id}
-              className="grid gap-3 border-4 border-black m-2 p-4 rounded-md grid-cols-1 md:grid-cols-2 sm:max-w-screen-md mx-auto max-w-[95%]"
+              className="grid gap-3 border-4 border-black m-2 p-4 rounded-md grid-cols-1 md:grid-cols-2"
             >
               <div className="">
                 <p>
