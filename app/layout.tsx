@@ -4,7 +4,7 @@ import AuthProvider from "./components/AuthProvider";
 import Nav from "./components/Nav";
 
 export const metadata: Metadata = {
-  title: "Emotional Intelligence",
+  title: "Mood Board",
   description:
     "Lean about your emotions and how to better express your feelings.",
 };
