@@ -14,7 +14,7 @@ export function GoogleSignIn() {
   return (
     <button
       onClick={handleGoogleClick}
-      className="w-full flex items-center font-semibold justify-center h-14 px-6 mt-4 transition-colors duration-300 bg-white hover:bg-black border-4 border-black text-black hover:text-white rounded-lg focus:shadow-outline hover:-translate-y-1 hover:underline"
+      className="w-full flex items-center font-semibold justify-center h-14 px-6 mt-4 transition-colors duration-300 bg-white hover:bg-black border-4 border-black text-black hover:text-white rounded-lg focus:shadow-outline hover:underline"
     >
       <span className="mr-4">Continue with</span>
       <Image src={googleLogo} alt="Google Logo" width={20} height={20} />
@@ -77,7 +77,7 @@ export function CredentialsSignIn(props: CredentialsFormProps) {
 
       <button
         type="submit"
-        className="w-full h-14 px-6 hover:text-white text-black transition-colors duration-150 hover:bg-black rounded-lg focus:shadow-outline bg-white border-black border-4 hover:-translate-y-1 hover:underline"
+        className="w-full h-14 px-6 hover:text-white text-black transition-colors hover:bg-black duration-300 rounded-lg focus:shadow-outline bg-white border-black border-4 hover:underline"
       >
         Log in
       </button>

@@ -81,7 +81,7 @@ export default function SignUpForm() {
 
       <button
         type="submit"
-        className="w-full h-14 px-6 hover:text-white text-black transition-colors duration-150 hover:bg-black rounded-lg focus:shadow-outline bg-white border-black border-4  hover:-translate-y-1 hover:underline"
+        className="w-full h-14 px-6 hover:text-white text-black transition-colors duration-300 hover:bg-black rounded-lg focus:shadow-outline bg-white border-black border-4 hover:underline"
       >
         Create an account
       </button>

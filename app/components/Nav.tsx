@@ -12,7 +12,7 @@ export default function Nav() {
 
   if (status == "authenticated") {
     return (
-      <div className="h-16 w-full top-0 left-0 fixed flex bg-black sm:hover:bg-black text-white sm:hover:text-white justify-evenly sm:justify-center sm:space-x-16 items-center hover:shadow-2xl">
+      <div className="h-16 w-full top-0 left-0 fixed flex bg-black sm:hover:bg-black text-white sm:hover:text-white justify-evenly sm:justify-center sm:space-x-16 items-center hover:shadow-2xl duration-300">
         <Link href="/">
           <p
             className="font-bold hover:underline"
