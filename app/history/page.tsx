@@ -16,7 +16,7 @@ export default function History() {
           </h1>
           <p className="text-center">Track your past mental check ins</p>
         </div>
-        <Calendar />
+        {/* <Calendar /> */}
         <HistoryEntries />
       </div>
     </>
