@@ -17,6 +17,7 @@ export default function MentalCheckInForm() {
   const [showResults, setShowResults] = useState(false);
   const [answerOneIndex, setAnswerOneIndex] = useState(0);
   const [answerTwoIndex, setAnswerTwoIndex] = useState(0);
+  const [backgroundColor, setBackgroundColor] = useState("");
   // user answers
   const [feeling, setFeeling] = useState("");
   const [thoughts, setThoughts] = useState("");
@@ -62,11 +63,11 @@ export default function MentalCheckInForm() {
   if (showResults) {
     return (
       <div className="5%] sm:w-auto sm:max-w-screen-sm">
-        <h2 className="text-2xl font-bold mb-8">Check in summary</h2>
+        <h2 className="text-2xl font-bold pb-8">Check in summary</h2>
 
         {status === "authenticated" && (
           <>
-            <p className="mb-2">Okay {username},</p>
+            <p className="pb-2">Okay {username},</p>
           </>
         )}
 
@@ -75,12 +76,12 @@ export default function MentalCheckInForm() {
           <span className="underline">{feeling}</span>
         </p>
         {thoughts !== "" ? (
-          <p className="max-w-sm mb-3">Because - &quot;{thoughts}&quot;</p>
+          <p className="max-w-sm">Because - &quot;{thoughts}&quot;</p>
         ) : (
           ""
         )}
 
-        <div className="grid sm:grid-cols-2 gap-3">
+        <div className="grid sm:grid-cols-2 gap-3 pt-3">
           <FeelingAppButton
             onClick={() => setShowResults(false)}
             text="Go Back"
@@ -171,7 +172,7 @@ export default function MentalCheckInForm() {
                   key={answer.label}
                   onClick={() => goToQuestionThree(index)}
                   text={answer.label}
-                  // color={}
+                  color={backgroundColor}
                 />
               );
             })}
@@ -193,7 +194,10 @@ export default function MentalCheckInForm() {
         return (
           <FeelingAppButton
             key={answer.label}
-            onClick={() => goToQuestionTwo(index)}
+            onClick={() => {
+              goToQuestionTwo(index);
+              setBackgroundColor(answer.color);
+            }}
             text={answer.label}
             color={answer.color}
           />
