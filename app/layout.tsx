@@ -19,7 +19,7 @@ export default function RootLayout({
       <body>
         <AuthProvider>
           <Nav />
-          <main className="mt-16">{children}</main>
+          <main className="pt-16">{children}</main>
         </AuthProvider>
       </body>
     </html>

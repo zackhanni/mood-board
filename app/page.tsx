@@ -19,9 +19,9 @@ export default function SignInPage() {
     return (
       <>
         <div className="flex flex-col justify-center items-center">
-          <div className="max-w-sm py-4">
+          <div className="max-w-sm py-16">
             {/* {JSON.stringify(data)} */}
-            <p className="py-8">You are currently logged in as:</p>
+            <p className="pb-4 underline">You are currently logged in as:</p>
             <UserData />
           </div>
 
