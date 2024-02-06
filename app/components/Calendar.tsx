@@ -2,6 +2,21 @@ export default function Calendar(props) {
   const date = new Date();
   const thisYear = date.getFullYear();
   const thisMonth = date.getMonth() + 1; // JavaScript counts months from 0 to 11
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const monthName = monthNames[thisMonth - 1];
   const daysThisMonth = new Date(thisYear, thisMonth, 0).getDate();
 
   const firstDayOfMonth = new Date(thisYear, thisMonth - 1, 1);
@@ -32,8 +47,8 @@ export default function Calendar(props) {
 
   return (
     <section className="">
-      <h2 className="pl-3">A review of this month</h2>
-      <p>{JSON.stringify(dateFeelingArray)}</p>
+      <h2 className="pl-3">Your {monthName} history</h2>
+      {/* <p>{JSON.stringify(dateFeelingArray)}</p> */}
       <div className="grid grid-cols-7 gap-1 p-3">
         {calArray.map((day, index) => {
           // get the list of entries
