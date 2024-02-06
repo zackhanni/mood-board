@@ -6,7 +6,7 @@ interface ButtonProps {
   bgToggle?: boolean;
 }
 
-const colorMap = {
+const colorMap: { [key: string]: string } = {
   "yellow-100": "hover:bg-yellow-100",
   "blue-100": "hover:bg-blue-100",
   "red-100": "hover:bg-red-100",

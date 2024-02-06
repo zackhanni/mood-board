@@ -39,7 +39,7 @@ export default function Calendar(props: CalendarProps) {
     calArray.push(date);
   }
 
-  const feelingColors = {
+  const feelingColors: { [key: string]: string } = {
     Valued: "bg-yellow-100",
     Numb: "bg-blue-100",
     angry: "bg-red-100",
