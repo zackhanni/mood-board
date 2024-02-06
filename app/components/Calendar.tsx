@@ -1,4 +1,11 @@
-export default function Calendar(props) {
+interface CalendarProps {
+  data: Array<{
+    createdAt: string;
+    feeling: string;
+  }>;
+}
+
+export default function Calendar(props: CalendarProps) {
   const date = new Date();
   const thisYear = date.getFullYear();
   const thisMonth = date.getMonth() + 1; // JavaScript counts months from 0 to 11
@@ -39,11 +46,14 @@ export default function Calendar(props) {
   };
 
   // make a key value pair of dates and feelings in the data array
-  let dateFeelingArray = props.data.reduce((accumulator, entry) => {
-    let formattedDate = new Date(entry.createdAt).toISOString().split("T")[0];
-    accumulator[formattedDate] = entry.feeling;
-    return accumulator;
-  }, {});
+  let dateFeelingArray = props.data.reduce(
+    (accumulator: { [key: string]: string }, entry) => {
+      let formattedDate = new Date(entry.createdAt).toISOString().split("T")[0];
+      accumulator[formattedDate] = entry.feeling;
+      return accumulator;
+    },
+    {}
+  );
 
   return (
     <section className="">
