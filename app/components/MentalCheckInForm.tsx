@@ -18,6 +18,8 @@ export default function MentalCheckInForm() {
   const [answerOneIndex, setAnswerOneIndex] = useState(0);
   const [answerTwoIndex, setAnswerTwoIndex] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("");
+  const [shouldToggleBackground, setShouldToggleBackground] = useState(false);
+  const [selectedAnswerLabel, setSelectedAnswerLabel] = useState("");
   // user answers
   const [feeling, setFeeling] = useState("");
   const [thoughts, setThoughts] = useState("");
@@ -119,8 +121,14 @@ export default function MentalCheckInForm() {
               return (
                 <FeelingAppButton
                   key={answer.label}
-                  onClick={() => setFeeling(answer.label)}
+                  onClick={() => {
+                    setFeeling(answer.label);
+                    setSelectedAnswerLabel(answer.label);
+                  }}
                   text={answer.label}
+                  color={backgroundColor}
+                  bgColor={`bg-${backgroundColor}`}
+                  bgToggle={answer.label === selectedAnswerLabel}
                 />
               );
             })}
