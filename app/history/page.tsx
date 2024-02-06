@@ -1,10 +1,4 @@
-"use client";
-
-import Nav from "../components/Nav";
-import UserData from "../components/UserData";
 import HistoryEntries from "../components/HistoryEntries";
-import { signOut, useSession } from "next-auth/react";
-import Calendar from "../components/Calendar";
 
 export default function History() {
   return (
@@ -16,7 +10,6 @@ export default function History() {
           </h1>
           <p className="text-center">Track your past mental check ins</p>
         </div>
-        {/* <Calendar /> */}
         <HistoryEntries />
       </div>
     </>
