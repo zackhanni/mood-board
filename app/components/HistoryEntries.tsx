@@ -34,9 +34,15 @@ export default function HistoryEntries() {
     fetchData();
   }, [userEmail]);
 
+  // createdAt property of Entry type is expecting string but receiving Data object. this converts it
+  const formattedEntries = entries.map((entry) => ({
+    ...entry,
+    createdAt: entry.createdAt.toISOString(),
+  }));
+
   return (
     <>
-      <Calendar data={entries} />
+      <Calendar data={formattedEntries} />
       <div>
         {entries.length > 0 ? (
           entries.toReversed().map((entry) => {
