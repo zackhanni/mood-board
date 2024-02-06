@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -41,14 +43,11 @@ export default function HistoryEntries() {
             return (
               <div
                 key={entry.id}
-                className="grid gap-3 border-4 border-black m-2 p-4 rounded-md grid-cols-1 md:grid-cols-2"
+                className="grid gap-3 border-4 border-black m-2 p-4 rounded-md grid-cols-1 sm:grid-cols-2"
               >
                 <div className="">
-                  <p>
-                    You were feeling{" "}
-                    <span className="font-bold">{entry.feeling} </span> on
-                  </p>
-                  <p>
+                  <p className="font-bold">{entry.feeling}</p>
+                  <div className="text-xs">
                     {new Date(entry.createdAt).toLocaleDateString("en-US", {
                       weekday: "short",
                       year: "numeric",
@@ -57,15 +56,18 @@ export default function HistoryEntries() {
                       hour: "2-digit",
                       minute: "2-digit",
                     })}
-                  </p>
+                  </div>
                 </div>
 
                 {entry.thoughts && (
-                  <p>
-                    Your <span className="underline">thoughts</span>:
-                    <br />
-                    {entry.thoughts}
-                  </p>
+                  <div className="flex flex-col text-xs">
+                    <p>
+                      Your <span className="underline">thoughts</span>:
+                    </p>
+                    <p className="text-black/60 bg-black/10 p-1">
+                      {entry.thoughts}
+                    </p>
+                  </div>
                 )}
               </div>
             );
