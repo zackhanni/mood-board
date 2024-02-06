@@ -19,12 +19,12 @@ export default function SignInLandingPage() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center rounded-lg sm:shadow-md sm:hover:shadow-2xl p-8 max-w-sm duration-300">
-          <div className="w-full flex text-center space-x-4">
+        <div className="flex flex-col items-center rounded-lg shadow-md sm:hover:shadow-2xl pb-8 max-w-sm duration-300">
+          <div className="w-full flex text-center">
             <h2
-              className={`duration-300 hover:underline hover:-translate-y-1 rounded-md font-bold py-3 w-1/2 ${
-                !toggle
-                  ? "bg-black text-white shadow-2xl"
+              className={`duration-300 py-3 w-1/2 rounded-tl-lg ${
+                toggle
+                  ? "bg-black/10 border-b border-r text-black/50 border-black/30 hover:underline"
                   : "bg-white text-black"
               }`}
               onClick={handleClick}
@@ -32,9 +32,9 @@ export default function SignInLandingPage() {
               Log In
             </h2>
             <h2
-              className={`duration-300 hover:underline hover:-translate-y-1 rounded-md font-bold py-3 w-1/2  ${
-                toggle
-                  ? "bg-black text-white shadow-2xl"
+              className={`duration-300 py-3 w-1/2 rounded-tr-xl ${
+                !toggle
+                  ? "bg-black/10 border-b border-l text-black/50 border-black/30 hover:underline"
                   : "bg-white text-black"
               }`}
               onClick={handleClick}
@@ -43,15 +43,17 @@ export default function SignInLandingPage() {
             </h2>
           </div>
 
-          {!toggle ? (
-            <>
-              <CredentialsSignIn />
-              <span className="text-black text-center mt-2">Or</span>
-              <GoogleSignIn />
-            </>
-          ) : (
-            <SignUpForm />
-          )}
+          <div className="px-8">
+            {!toggle ? (
+              <>
+                <CredentialsSignIn />
+                {/* <span className="text-black text-center">Or</span> */}
+                <GoogleSignIn />
+              </>
+            ) : (
+              <SignUpForm />
+            )}
+          </div>
         </div>
       </div>
     </div>
