@@ -10,16 +10,9 @@ export default function SignInLandingPage() {
   };
 
   return (
-    <div className="-translate-y-16">
+    <div className="pt-8 sm:pt-16">
       <div className="flex flex-col items-center">
-        <div className="py-4">
-          <h1 className="text-2xl font-bold text-center">Mood Board</h1>
-          <p className="mx-auto text-center max-w-xs">
-            Learn about your feelings and track your daily emotions
-          </p>
-        </div>
-
-        <div className="flex flex-col items-center rounded-lg shadow-md sm:hover:shadow-2xl pb-8 max-w-sm duration-300">
+        <section className="flex flex-col items-center rounded-lg shadow-md sm:hover:shadow-2xl pb-8 max-w-sm duration-300">
           <div className="w-full flex text-center">
             <h2
               className={`duration-300 py-3 w-1/2 rounded-tl-lg ${
@@ -54,7 +47,7 @@ export default function SignInLandingPage() {
               <SignUpForm />
             )}
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
