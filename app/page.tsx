@@ -1,22 +1,13 @@
-"use client";
+import Hero from "./components/Hero";
+import HomeSection1 from "./components/HomeSection1";
+import HomeSection2 from "./components/HomeSection2";
 
-import { signOut, useSession } from "next-auth/react";
-import SignInLandingPage from "./components/SignInLandingPage";
-import { useRouter } from "next/navigation";
-
-export default function SignInPage() {
-  const { data, status } = useSession();
-  const router = useRouter();
-
-  const handleSignOut = () => {
-    signOut({ callbackUrl: "/" });
-  };
-
-  if (status === "unauthenticated") {
-    return <SignInLandingPage />;
-  }
-
-  if (status === "authenticated") {
-    return <>{router.push("/settings")}</>;
-  }
+export default function LandingPageHome() {
+  return (
+    <>
+      <Hero />
+      <HomeSection1 />
+      <HomeSection2 />
+    </>
+  );
 }
