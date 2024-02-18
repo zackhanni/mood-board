@@ -2,6 +2,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
 import axios from "axios";
+import Button from "./Button";
 
 export default function UserData() {
   const { data: session } = useSession();
@@ -41,9 +42,9 @@ export default function UserData() {
         <p className="">{username}</p>
         <p
           className="text-black/50 text-xs hover:underline"
-          onClick={() => setShowNewNameInput(true)}
+          onClick={() => setShowNewNameInput(!showNewNameInput)}
         >
-          (Change Name. Log in again to take effect)
+          (Change Name)
         </p>
         {showNewNameInput && (
           <form onSubmit={changeName}>
@@ -54,14 +55,9 @@ export default function UserData() {
               required
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
-              className="w-full px-4 py-3 mb-4 border border-gray-300 rounded-md"
+              className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
             />
-            <button
-              type="submit"
-              className="w-full py-2 px-4 bg-red-600 text-white hover:underline"
-            >
-              Save
-            </button>
+            <Button text="Save" classes="bg-red-600 w-full" />
           </form>
         )}
         <p className="">{email}</p>
