@@ -1,7 +1,11 @@
 import Button from "./Button";
 import Image from "next/image";
+import Link from "next/link";
+// import { useRouter } from "next/navigation";
 
 export default function Hero() {
+  // const router = useRouter();
+
   return (
     <section className="py-16 flex flex-col-reverse sm:flex-row items-center mx-auto sm:max-w-[80%]">
       <div className="flex flex-col mx-auto sm:max-w-[50%] space-y-4">
@@ -12,14 +16,19 @@ export default function Hero() {
           Evolve your understanding of emotions and dig deeper into your self.
         </p>
         <div className="flex space-x-4 mx-auto sm:mx-0">
-          <Button
-            classes="bg-black rounded-xl text-sm"
-            text="Get started FREE"
-          />
-          <Button
-            classes="bg-gray-500 rounded-xl text-sm"
-            text="Try the demo"
-          />
+          <Link href="/connect">
+            <Button
+              classes="bg-black rounded-xl text-sm"
+              text="Get started FREE"
+              // onClick={() => router.push("/settings")}
+            />
+          </Link>
+          <Link href="/connect">
+            <Button
+              classes="bg-[#6C63FF] rounded-xl text-sm"
+              text="Try the demo"
+            />
+          </Link>
         </div>
       </div>
       <div className="sm:max-w-[50%] mx-auto">
