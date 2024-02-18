@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import LandingNav from "./NavLanding";
 
 export default function Nav() {
   const { status } = useSession();
@@ -23,15 +24,22 @@ export default function Nav() {
 
   if (status == "authenticated") {
     return (
-      <div className="h-16 w-full top-0 left-0 fixed flex bg-black sm:hover:bg-black text-white sm:hover:text-white justify-evenly sm:justify-center sm:space-x-16 items-center hover:shadow-2xl duration-300">
-        {navData.map((navLink) => {
-          return (
-            <Link href={navLink.link} key={navLink.text}>
-              <p className="font-bold hover:underline">{navLink.text}</p>
-            </Link>
-          );
-        })}
-      </div>
+      <nav className="h-16 w-full top-0 fixed flex justify-between items-center px-8">
+        <div>
+          <Link href="/">Mood Board</Link>
+        </div>
+        <div className="flex justify-between space-x-8">
+          {navData.map((navLink) => {
+            return (
+              <Link href={navLink.link} key={navLink.text}>
+                <p className="hover:underline">{navLink.text}</p>
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
     );
   }
+
+  return <LandingNav />;
 }
