@@ -20,7 +20,6 @@ export default function Hero() {
             <Button
               classes="bg-black rounded-xl text-sm"
               text="Get started FREE"
-              // onClick={() => router.push("/settings")}
             />
           </Link>
           <Link href="/connect">
