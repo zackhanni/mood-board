@@ -29,7 +29,7 @@ export default function UserData() {
   };
 
   return (
-    <div className="">
+    <div className="bg-[#6C63FF]/20 p-8 rounded-lg">
       {profileImage ? (
         <Image
           src={profileImage}
@@ -38,6 +38,7 @@ export default function UserData() {
           height={100}
         />
       ) : null}
+      <p className="pb-4">You are currently logged in as:</p>
       <div className="flex flex-col items-center space-x-2 space-y-2">
         <p className="">{username}</p>
         <p
@@ -47,7 +48,7 @@ export default function UserData() {
           (Change Name)
         </p>
         {showNewNameInput && (
-          <form onSubmit={changeName}>
+          <form onSubmit={changeName} className="">
             <input
               type="text"
               name="name"
@@ -55,9 +56,15 @@ export default function UserData() {
               required
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
-              className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
+              className="w-full px-4 py-2 mb-2 border border-gray-300 text-sm rounded-xl"
             />
-            <Button text="Save" classes="bg-red-600 w-full" />
+            <Button
+              text="Save"
+              classes="bg-red-600 rounded-xl text-sm w-full"
+              onClick={() =>
+                alert("Changes log out and in again to see changes.")
+              }
+            />
           </form>
         )}
         <p className="">{email}</p>
