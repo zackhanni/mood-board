@@ -216,6 +216,64 @@ const FeelingQuestionData = {
         ],
       },
     },
+    {
+      label: "Fearful",
+      color: "orange",
+      questionTwo: {
+        question:
+          "You feel fearful. Take a deep breath. Let;s get more specific.",
+        answers: [
+          {
+            label: "Scared",
+            questionThree: {
+              question:
+                "This is question 3. There are many like it but this one is mine.",
+              answers: [{ label: "Helpless" }, { label: "Frightened" }],
+            },
+          },
+          {
+            label: "Anxious",
+            questionThree: {
+              question:
+                "This is question 3. There are many like it but this one is mine.",
+              answers: [{ label: "Overwhelmed" }, { label: "Worried" }],
+            },
+          },
+          {
+            label: "Insecure",
+            questionThree: {
+              question:
+                "This is question 3. There are many like it but this one is mine.",
+              answers: [{ label: "Inadequate" }, { label: "Inferior" }],
+            },
+          },
+          {
+            label: "Weak",
+            questionThree: {
+              question:
+                "This is question 3. There are many like it but this one is mine.",
+              answers: [{ label: "Worthless" }, { label: "Insignificant" }],
+            },
+          },
+          {
+            label: "Rejected",
+            questionThree: {
+              question:
+                "This is question 3. There are many like it but this one is mine.",
+              answers: [{ label: "Excluded" }, { label: "Persecuted" }],
+            },
+          },
+          {
+            label: "Threatened",
+            questionThree: {
+              question:
+                "This is question 3. There are many like it but this one is mine.",
+              answers: [{ label: "Nervous" }, { label: "Exposed" }],
+            },
+          },
+        ],
+      },
+    },
   ],
 };
 
