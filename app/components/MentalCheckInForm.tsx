@@ -8,7 +8,6 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import axios from "axios";
-import SignInPage from "../page";
 import MentalCheckInFormQuestion from "./MentalCheckInFormQuestion";
 
 export default function MentalCheckInForm() {
@@ -18,7 +17,6 @@ export default function MentalCheckInForm() {
   const [answerOneIndex, setAnswerOneIndex] = useState(0);
   const [answerTwoIndex, setAnswerTwoIndex] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("");
-  const [shouldToggleBackground, setShouldToggleBackground] = useState(false);
   const [selectedAnswerLabel, setSelectedAnswerLabel] = useState("");
   // user answers
   const [feeling, setFeeling] = useState("");
