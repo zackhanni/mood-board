@@ -50,7 +50,7 @@ export default function MentalCheckInForm() {
         createdAt: new Date(),
         email: email,
       };
-      const response = await axios.post("/api/auth/makeEntry", newEntry);
+      const response = await axios.post("/api/entries", newEntry);
 
       console.log("New entry created: ", newEntry);
       router.push("/history");
