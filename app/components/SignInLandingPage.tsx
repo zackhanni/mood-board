@@ -40,7 +40,6 @@ export default function SignInLandingPage() {
             {!toggle ? (
               <>
                 <CredentialsSignIn />
-                {/* <span className="text-black text-center">Or</span> */}
                 <GoogleSignIn />
               </>
             ) : (
