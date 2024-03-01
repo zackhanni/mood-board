@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
   const [newUser, setNewUser] = useState({
@@ -8,6 +9,7 @@ export default function SignUpForm() {
     password: "",
   });
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,27 +24,48 @@ export default function SignUpForm() {
     setNewUser({ name, email, password });
 
     try {
-      //   const response = await fetch("/api/auth/checkUserExists", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({ email }),
-      //   });
-      //   const data = await response.json();
+      // const findEmail = {
+      //   email: email,
+      // };
 
-      //   if (data.userExists) {
-      //     setError("Email already in use");
-      //     console.log("Email already in use");
-      //     return;
-      //   }
+      // // Check is user exists already
+      // console.log(`Checking for user with email: ${email}`);
+      // const userExists = await axios.post("api/user/find", findEmail);
+      // if (userExists.data.exists) {
+      //   setError("Email already in use");
+      //   return;
+      // }
 
-      const registerResponse = await axios.post("/api/auth/register", newUser);
-      console.log(`User ${registerResponse.data.user.name} was created`);
-      // then log new user in and show main page
-    } catch (error) {
+      // create user if email does'nt exist in db
+      const registerResponse = await axios.post("/api/user/create", newUser);
+      alert(`User ${newUser.name} was created successfully!`);
+      router.push("/");
+    } catch (error: any) {
       console.error("Error creating user:", error);
-      setError("Error creating user");
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        const { status, data } = error.response;
+        switch (status) {
+          case 422:
+            setError("Invalid data provided");
+            break;
+          case 409:
+            setError("Email already in use");
+            break;
+          case 500:
+            setError("An error occurred while creating the user");
+            break;
+          default:
+            setError("An unknown error occurred");
+        }
+      } else if (error.request) {
+        // The request was made but no response was received
+        setError("No response received from the server");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        setError("An error occurred while setting up the request");
+      }
     }
   };
 
