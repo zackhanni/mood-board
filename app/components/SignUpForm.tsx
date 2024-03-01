@@ -3,16 +3,18 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
-  const [newUser, setNewUser] = useState({
-    email: "",
-    name: "",
-    password: "",
-  });
+  // const [newUser, setNewUser] = useState({
+  //   email: "",
+  //   name: "",
+  //   password: "",
+  // });
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    //unconventional. try to change this
     const target = e.target as typeof e.target & {
       name: { value: string };
       email: { value: string };
@@ -21,7 +23,7 @@ export default function SignUpForm() {
     const name = target.name.value;
     const email = target.email.value;
     const password = target.password.value;
-    setNewUser({ name, email, password });
+    // setNewUser({ name, email, password });
 
     try {
       // const findEmail = {
@@ -37,8 +39,12 @@ export default function SignUpForm() {
       // }
 
       // create user if email does'nt exist in db
-      const registerResponse = await axios.post("/api/user/create", newUser);
-      alert(`User ${newUser.name} was created successfully!`);
+      const registerResponse = await axios.post("/api/user/create", {
+        name,
+        email,
+        password,
+      });
+      alert(`User ${name} was created successfully!`);
       router.push("/");
     } catch (error: any) {
       console.error("Error creating user:", error);
