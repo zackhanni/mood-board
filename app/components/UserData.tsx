@@ -15,12 +15,11 @@ export default function UserData() {
   const changeName = async (e: React.FormEvent) => {
     // e.preventDefault();
     try {
-      const updateUser = {
+      // changing to post didnt work either. any cant i make a new account or update a name!!!
+      const response = await axios.put("/api/user/update", {
         name: newName,
         email: email,
-      };
-      // can i change axios out for prisma?
-      const response = await axios.post("/api/auth/changeName", updateUser);
+      });
       setShowNewNameInput(false);
       console.log("User updated successfully: ", response.data);
     } catch (error) {
@@ -62,7 +61,7 @@ export default function UserData() {
               text="Save"
               classes="bg-red-600 rounded-xl text-sm w-full"
               onClick={() =>
-                alert("Changes log out and in again to see changes.")
+                alert("Please log out and in again to see changes.")
               }
             />
           </form>
