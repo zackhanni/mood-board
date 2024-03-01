@@ -23,7 +23,7 @@ export default function HistoryEntries() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/entries", {
+        const response = await axios.get("/api/entries/get", {
           params: {
             email: userEmail,
           },
