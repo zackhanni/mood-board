@@ -3,18 +3,11 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
-  // const [newUser, setNewUser] = useState({
-  //   email: "",
-  //   name: "",
-  //   password: "",
-  // });
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    //unconventional. try to change this
     const target = e.target as typeof e.target & {
       name: { value: string };
       email: { value: string };
@@ -23,7 +16,6 @@ export default function SignUpForm() {
     const name = target.name.value;
     const email = target.email.value;
     const password = target.password.value;
-    // setNewUser({ name, email, password });
 
     try {
       // const findEmail = {
