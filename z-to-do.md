@@ -19,8 +19,9 @@ https://feelingswheel.com/
 
 ## user database
 
-- properly set up database for users to sign in with an account
-- create a way to create an account and store to a database
+- added security my changing mongodb network access away from 0.0.0.0/0 (which lets anyone access the server)
+- set up way for users to see name change right away
+- set up ability to change email and confirm new email
 
 ## database next stems
 
