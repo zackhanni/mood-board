@@ -1,10 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,7 +35,7 @@ export default function SignUpForm() {
         password,
       });
       alert(`User ${name} was created successfully!`);
-      router.push("/");
+      window.location.href = "/connect";
     } catch (error: any) {
       console.error("Error creating user:", error);
       if (error.response) {
