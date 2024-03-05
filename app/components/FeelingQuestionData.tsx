@@ -218,7 +218,7 @@ const FeelingQuestionData = {
     },
     {
       label: "Fearful",
-      color: "orange",
+      color: "orange-300",
       questionTwo: {
         question:
           "You feel fearful. Take a deep breath. Let;s get more specific.",
