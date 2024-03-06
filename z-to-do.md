@@ -4,8 +4,12 @@
 - set up username and password login system
 - finish fleshing out data in general. many more inputs to make
 - have optional text input field at the end
+- change contact page tabs to only change when non active tab is selected.
+- change "settings" to "account" or something
+- change name (in settings) to "what would you like to be called?
+- update other routes like posts to find posts from current user
 
-emily- "name of app should be moodboard" and "pay me when 50 percent"
+emily- "name of app should be mood board" and "pay me when 50 percent"
 
 ## notes
 
