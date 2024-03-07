@@ -43,8 +43,8 @@ export const authConfig: NextAuthOptions = {
           );
 
           if (passwordIsCorrect) {
-            console.log(`the authorize user object is:`);
-            console.log(JSON.stringify(user, null, 2));
+            // console.log(`the authorize user object is:`);
+            // console.log(JSON.stringify(user, null, 2));
             return user;
           }
 
@@ -69,8 +69,8 @@ export const authConfig: NextAuthOptions = {
     session({ session, token }) {
       if (token && session.user) {
         session.user.id = token.id;
-        console.log("User ID stored in session.user.id");
-        console.log(session.user.id);
+        // console.log("User ID stored in session.user.id");
+        // console.log(session.user.id);
       } else {
         console.error("User is undefined in session callback");
       }
