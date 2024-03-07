@@ -22,10 +22,11 @@ export default function MentalCheckInForm() {
   const [feeling, setFeeling] = useState("");
   const [thoughts, setThoughts] = useState("");
 
-  // get name of user
+  // get user info from session
   const { status, data: session } = useSession();
   const username = session?.user?.name || "friend";
-  const email = session?.user?.email || "Unknown Email";
+  const userId = session?.user?.id || "Unknown userId";
+  console.log("Session data:", session);
 
   const goToQuestionTwo = (index: number) => {
     setAnswerOneIndex(index);
@@ -47,8 +48,7 @@ export default function MentalCheckInForm() {
       const newEntry = {
         feeling: feeling,
         thoughts: thoughts,
-        createdAt: new Date(),
-        email: email,
+        userId: userId,
       };
       const response = await axios.post("/api/entries/create", newEntry);
 

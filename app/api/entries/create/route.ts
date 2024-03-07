@@ -6,9 +6,9 @@ import prisma from "@/prisma";
 // api/entries
 export const POST = async (req: Request, res: Response) => {
   try {
-    const { feeling, thoughts, email } = await req.json();
-    if (!feeling || !thoughts || !email) {
-      return NextResponse.json({ message: "Invalid Data " });
+    const { feeling, thoughts, userId } = await req.json();
+    if (!feeling || !thoughts || !userId) {
+      return NextResponse.json({ message: "Invalid Data" });
     }
     await connectToDatabase();
     const entry = await prisma.entry.create({
@@ -16,8 +16,9 @@ export const POST = async (req: Request, res: Response) => {
         feeling,
         thoughts,
         user: {
+          // once current user is set up, connect with the current user's id
           connect: {
-            email: email,
+            id: userId,
           },
         },
       },
@@ -25,12 +26,11 @@ export const POST = async (req: Request, res: Response) => {
 
     return NextResponse.json({ entry }, { status: 201 });
   } catch (error) {
+    console.error(error);
     console.log(error);
     return NextResponse.json(
-      { error: (error as Error).message, stack: (error as Error).stack },
+      { error: (error as Error).message },
       { status: 500 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 };
