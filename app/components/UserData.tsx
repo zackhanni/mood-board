@@ -5,9 +5,10 @@ import axios from "axios";
 import Button from "./Button";
 
 export default function UserData() {
-  const { data: session } = useSession();
+  const { data: session, update } = useSession();
   const username = session?.user?.name || "Unable to fetch name";
   const email = session?.user?.email || "Unable to fetch email";
+  const userId = session?.user?.id || "Unable to fetch user id";
   const [newName, setNewName] = useState("");
   const [showNewNameInput, setShowNewNameInput] = useState(false);
   const profileImage = session?.user?.image;
@@ -15,12 +16,12 @@ export default function UserData() {
   const changeName = async (e: React.FormEvent) => {
     // e.preventDefault();
     try {
-      // changing to post didnt work either. any cant i make a new account or update a name!!!
       const response = await axios.put("/api/user/update", {
         name: newName,
-        email: email,
+        id: userId,
       });
       setShowNewNameInput(false);
+      //also change the name on client side (await update({...session, user: {...session?.user,name:"NEW NAME"}}))
       console.log("User updated successfully: ", response.data);
     } catch (error) {
       console.error("Error updating user: ", error);
@@ -38,6 +39,8 @@ export default function UserData() {
         />
       ) : null}
       <p className="pb-4">You are currently logged in as:</p>
+      <p className="pb-4">{userId}</p>
+
       <div className="flex flex-col items-center space-x-2 space-y-2">
         <p className="">{username}</p>
         <p

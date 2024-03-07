@@ -5,12 +5,12 @@ import { NextResponse } from "next/server";
 // change a user's name
 // PUT api/user/update
 export const PUT = async (req: Request) => {
-  const { name, email } = await req.json();
+  const { name, email, id } = await req.json();
   await connectToDatabase();
   try {
     const updateUser = await prisma.user.update({
       where: {
-        email: email,
+        id: id,
       },
       data: {
         name: name,
@@ -19,5 +19,9 @@ export const PUT = async (req: Request) => {
     return NextResponse.json({ updateUser });
   } catch (error) {
     console.log(error);
+    return NextResponse.json(
+      { error: "An error occurred while updating the user." },
+      { status: 500 }
+    );
   }
 };
