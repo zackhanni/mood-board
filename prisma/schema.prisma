@@ -23,9 +23,12 @@ model Entry {
   feeling   String
   thoughts  String?
   createdAt DateTime @default(now())
-  email     String
-  user      User     @relation(fields: [email], references: [email])
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 // aync app to database with...
+//npx prisma generate
 // npx prisma db push
+
+// if you're working in a production environment, it's recommended to use migrations (npx prisma migrate dev for development) instead of prisma db push to have more control over the database schema changes and to keep track of schema history.
