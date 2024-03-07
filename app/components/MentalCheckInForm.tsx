@@ -26,7 +26,7 @@ export default function MentalCheckInForm() {
   const { status, data: session } = useSession();
   const username = session?.user?.name || "friend";
   const userId = session?.user?.id || "Unknown userId";
-  console.log("Session data:", session);
+  // console.log("Session data:", session);
 
   const goToQuestionTwo = (index: number) => {
     setAnswerOneIndex(index);
@@ -64,13 +64,7 @@ export default function MentalCheckInForm() {
     return (
       <div className="5%] sm:w-auto sm:max-w-screen-sm">
         <h2 className="text-2xl font-bold pb-8">Check in summary</h2>
-
-        {status === "authenticated" && (
-          <>
-            <p className="pb-2">Okay {username},</p>
-          </>
-        )}
-
+        <p className="pb-2">Okay {username},</p>
         <p className="">
           Right now you&apos;re feeling{" "}
           <span className="underline">{feeling}</span>
@@ -136,13 +130,16 @@ export default function MentalCheckInForm() {
             />
             <form
               className="text-black flex flex-col"
-              onSubmit={() => setShowResults(true)}
+              onSubmit={(e) => {
+                e.preventDefault();
+                setShowResults(true);
+              }}
             >
               <textarea
                 name="thoughts"
                 rows={4}
                 // cols={50}
-                // placeholder="Write down a little about what happened..."
+                placeholder="Write down a little about what happened..."
                 className="px-1 py-1 mb-3 border-4 border-black rounded-md text-xs"
                 value={thoughts}
                 onChange={(e) => setThoughts(e.target.value)}
