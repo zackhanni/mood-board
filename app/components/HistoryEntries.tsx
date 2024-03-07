@@ -18,14 +18,14 @@ type Entry = {
 export default function HistoryEntries() {
   const [entries, setEntries] = useState<Entry[]>([]);
   const { data: session } = useSession();
-  const userEmail = session?.user?.email;
+  const userId = session?.user?.id;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/api/entries/get", {
           params: {
-            email: userEmail,
+            id: userId,
           },
         });
         setEntries(response.data.entries);
@@ -34,8 +34,9 @@ export default function HistoryEntries() {
       }
     };
     fetchData();
-  }, [userEmail]);
+  }, [userId]);
 
+  // find all words that should be yellow
   let yellowWords: string[] = [];
   let FeelQ2AnswersYellow = FeelingQuestionData.answers[0].questionTwo.answers;
   for (let i = 0; i < FeelQ2AnswersYellow.length; i++) {
@@ -48,6 +49,7 @@ export default function HistoryEntries() {
     }
   }
 
+  // find all words that should be blue
   let blueWords: string[] = [];
   let FeelQ2AnswersBlue = FeelingQuestionData.answers[1].questionTwo.answers;
   for (let i = 0; i < FeelQ2AnswersBlue.length; i++) {
@@ -60,6 +62,7 @@ export default function HistoryEntries() {
     }
   }
 
+  // find all words that should be red
   let redWords: string[] = [];
   let FeelQ2AnswersRed = FeelingQuestionData.answers[2].questionTwo.answers;
   for (let i = 0; i < FeelQ2AnswersRed.length; i++) {

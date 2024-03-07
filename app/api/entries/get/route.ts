@@ -2,28 +2,28 @@ import { connectToDatabase } from "@/helpers/server-helpers";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/prisma";
 
-// get all entries for a user
+// GET all entries for a user
 // api/entries
 export const GET = async (req: NextRequest) => {
   try {
     await connectToDatabase();
-    const userEmail = req.nextUrl.searchParams.get("email");
-    if (!userEmail) {
+    const userId = req.nextUrl.searchParams.get("id");
+    if (!userId) {
       return NextResponse.json(
-        { error: "Email parameter is required" },
+        { error: "Unable to use id to get user posts." },
         { status: 400 }
       );
     }
     const entries = await prisma.entry.findMany({
       where: {
         user: {
-          email: userEmail,
+          id: userId,
         },
       },
     });
     return NextResponse.json({ entries }, { status: 200 });
   } catch (error) {
-    console.error(error); // Log the error
+    console.error(error);
     return NextResponse.json({ error: "Server Error" }, { status: 500 });
   } finally {
     await prisma.$disconnect();
