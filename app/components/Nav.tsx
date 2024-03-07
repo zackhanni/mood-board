@@ -8,10 +8,6 @@ import { useSession } from "next-auth/react";
 
 export default function Nav() {
   const [showMobileNav, setShowMobileNav] = useState(false);
-  const toggleMobileNav = () => {
-    setShowMobileNav(!showMobileNav);
-  };
-
   const { status } = useSession();
 
   let navData = [];
@@ -49,7 +45,7 @@ export default function Nav() {
   }
 
   return (
-    <nav className="h-16 w-full top-0 fixed flex justify-between items-center px-8 bg-white/95 z-50">
+    <nav className="h-16 w-full fixed top-0 flex justify-between items-center px-8 bg-white/95 z-50">
       <div className="">
         <Link href="/">Mood Board</Link>
       </div>
@@ -58,15 +54,15 @@ export default function Nav() {
         {showMobileNav ? (
           <FontAwesomeIcon
             icon={faRectangleXmark}
-            size="lg"
-            onClick={() => toggleMobileNav()}
+            size="xl"
+            onClick={() => setShowMobileNav(false)}
           />
         ) : (
           <FontAwesomeIcon
             icon={faBars}
-            size="lg"
+            size="xl"
             style={{ color: "#000000" }}
-            onClick={() => toggleMobileNav()}
+            onClick={() => setShowMobileNav(true)}
           />
         )}
       </div>
@@ -82,16 +78,16 @@ export default function Nav() {
               <Link
                 href={navLink.link}
                 key={navLink.text}
-                onClick={() => toggleMobileNav()}
+                onClick={() => setShowMobileNav(false)}
               >
                 <p className="hover:underline">{navLink.text}</p>
               </Link>
             );
           })}
-          <Link href="/connect" onClick={() => toggleMobileNav()}>
+          <Link href="/connect" onClick={() => setShowMobileNav(false)}>
             <p className="hover:underline">Log In</p>
           </Link>
-          <Link href="/connect" onClick={() => toggleMobileNav()}>
+          <Link href="/connect" onClick={() => setShowMobileNav(false)}>
             <p className="hover:underline">Get Started</p>
           </Link>
         </div>
