@@ -39,8 +39,7 @@ export default function UserData() {
         />
       ) : null}
       <p className="pb-4">You are currently logged in as:</p>
-      <p className="pb-4">{userId}</p>
-
+      {/* <p className="pb-4">{userId}</p> */}
       <div className="flex flex-col items-center space-x-2 space-y-2">
         <p className="">{username}</p>
         <p
